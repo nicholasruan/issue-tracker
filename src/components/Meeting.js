@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Meetings(props) {
+function Meeting(props) {
   return (
     <div>
       Meetings
@@ -8,4 +8,4 @@ function Meetings(props) {
   )
 }
 
-export default Meetings;
+export default Meeting;
