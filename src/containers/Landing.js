@@ -15,18 +15,18 @@ function Landing(props) {
 
         <div className="landing-button-container">
           <button className="landing-button" onClick={() => {
-            setShowLogin(true); 
-            setShowSignup(false); 
+            setShowLogin(true);
+            setShowSignup(false);
           }}>Login</button>
 
           <button className="landing-button" onClick={() => {
-            setShowSignup(true); 
-            setShowLogin(false); 
+            setShowSignup(true);
+            setShowLogin(false);
             }}>Signup</button>
         </div>
-        
-        {showLogin ? <Login /> : null}
-        {showSignup ? <Signup /> : null}
+
+        {showLogin ? <Login routerProps={props} /> : null}
+        {showSignup ? <Signup showLogin={setShowLogin} showSignup={setShowSignup} /> : null}
       </div>
       <img className="landing-bg" src={bgImage} alt="background"></img>
     </div>
