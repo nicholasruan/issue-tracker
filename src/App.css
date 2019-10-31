@@ -1,22 +1,55 @@
 .App {
-  text-align: center;
+  margin-left: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
+/* Login Component */
+body {
+  font-family: "Avenir Next"
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.form-container {
+  display: table-caption;
+  animation: fadein 2s;
 }
 
-.App-link {
-  color: #09d3ac;
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.form-item {
+  display: inline-grid;
+  padding-bottom: .5rem;
+}
+
+input.landing-input {
+  width: 200px;
+  padding: 3px;
+  border-radius: 3px;
+  border: 0.6px solid black;
+  font-family: Avenir Next;
+}
+
+input:focus {
+  outline: none;
+}
+
+/* Landing Component */
+.landing-button-container {
+  margin-bottom: 1.75em;
+}
+
+.landing-button {
+  font-family: "Avenir Next";
+  border: none;
+  cursor: pointer;
+}
+
+.landing-button:focus {
+  outline: none;
+}
+
+.landing-button:hover {
+  border-bottom: 1px solid;
+  transition: all .3s;
 }
