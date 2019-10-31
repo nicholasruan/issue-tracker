@@ -1,5 +1,44 @@
-.App {
-  margin-left: 20px;
+/* Landing Component */
+.landing-title{
+  
+}
+.landing-button-container {
+  margin-bottom: 1.75em;
+}
+
+.landing-button {
+  font-family: "Avenir Next";
+  border: none;
+  cursor: pointer;
+}
+
+.landing-button:focus {
+  outline: none;
+}
+
+.landing-button:hover {
+  border-bottom: 1px solid;
+  transition: all .3s;
+}
+
+.landing-container {
+  margin-left: 67px;
+}
+
+h2.landing-text {
+  line-height: 3.5rem;
+  font-size: 3rem;
+  font-weight: 400;
+}
+
+.landing-bg {
+  position: fixed;
+  left: 450px;
+  width: 121rem;
+}
+
+.outer-container {
+  display: inline-flex;
 }
 
 /* Login Component */
@@ -32,24 +71,4 @@ input.landing-input {
 
 input:focus {
   outline: none;
-}
-
-/* Landing Component */
-.landing-button-container {
-  margin-bottom: 1.75em;
-}
-
-.landing-button {
-  font-family: "Avenir Next";
-  border: none;
-  cursor: pointer;
-}
-
-.landing-button:focus {
-  outline: none;
-}
-
-.landing-button:hover {
-  border-bottom: 1px solid;
-  transition: all .3s;
 }
