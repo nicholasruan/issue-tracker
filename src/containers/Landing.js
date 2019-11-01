@@ -10,7 +10,7 @@ function Landing(props) {
   return (
     <div className="outer-container">
       <div className="landing-container">
-        <h1 className="landing-title">Issue Tracker</h1>
+        <h1 className="landing-title">IssueBase</h1>
         <h2 className="landing-text">Get your<br/>work done.<br/>Together.</h2>
 
         <div className="landing-button-container">

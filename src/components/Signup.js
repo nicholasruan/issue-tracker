@@ -11,9 +11,15 @@ function Signup(props) {
 
   const handleSignup = (e) => {
     e.preventDefault();
-    console.log(firstName, lastName, email, password, confirmpassword);
-
-    if (password !== confirmpassword) return alert('Passwords do not match');
+    if (password !== confirmpassword) {
+      return Swal.fire({
+        position: 'top-end',
+        title: 'Passwords do not match',
+        showConfirmButton: false,
+        timer: 3000,
+        width : 500
+      });
+    }
 
     axios.post('http://localhost:5000/api/users/register', {
       first_name: firstName,
@@ -22,21 +28,22 @@ function Signup(props) {
       password: password
     })
     .then(function (response) {
-      console.log(response);
       props.showLogin(true);
       props.showSignup(false);
       Swal.fire({
         position: 'top-end',
         title: 'Account created! Please login',
         showConfirmButton: false,
-        timer: 3000,
+        customClass: 'success',
+        timer: 4000,
         width: 500
       });
     })
     .catch(function (error) {
+      const message = error.response || '';
       Swal.fire({
         position: 'top-end',
-        title: error.response.data,
+        title: message.data,
         showConfirmButton: false,
         timer: 3000,
         width: 500

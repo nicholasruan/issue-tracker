@@ -16,16 +16,15 @@ function Login(props) {
     .then(function (response) {
       localStorage.token = response.data.user_token;
       localStorage.user_id = response.data._id;
-
       props.routerProps.history.push('/app');
     })
-    .catch(function (error) {
+    .catch((error) => {
       const message = error.response.data || '';
       Swal.fire({
         position: 'top-end',
         title: message,
         showConfirmButton: false,
-        timer: 3000,
+        timer: 4000,
         width: 500
       });
     })

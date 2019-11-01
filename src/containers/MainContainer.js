@@ -10,7 +10,6 @@ function MainContainer(props) {
   return (
     <div>
       <Navbar />
-      MainContainer
       <Switch>
         <Route exact path="/app" render={(routerProps) => <Dashboard {...routerProps} />} />
         <Route path="/app/:id" render={(routerProps) => <Project {...routerProps} />} />
