@@ -12,9 +12,9 @@ function MainContainer(props) {
       <Navbar />
       <Switch>
         <Route exact path="/app" render={(routerProps) => <Dashboard {...routerProps} />} />
-        <Route path="/app/:id" render={(routerProps) => <Project {...routerProps} />} />
         <Route path="/app/meetings" render={(routerProps) => <Meeting {...routerProps} />} />
         <Route path="/app/profile" render={(routerProps) => <Profile {...routerProps} />} />
+        <Route path="/app/projects/:id" render={(routerProps) => <Project {...routerProps} />} />
       </Switch>
     </div>
   )

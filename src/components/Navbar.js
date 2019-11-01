@@ -20,6 +20,11 @@ function Navbar(props) {
     burger.classList.toggle('toggle');
   }
 
+  const logout = () => {
+    localStorage.token = '';
+    localStorage.user_id = '';
+  }
+
   return (
     <div className="nav-container">
       <nav className="menu">
@@ -28,13 +33,18 @@ function Navbar(props) {
         </div>
         <ul className="nav-links">
           <li>
-            <a href="#">Dashboard</a>
+            <Link to="/app"><a href="#">Dashboard</a></Link>
           </li>
           <li>
-            <a href="#">Meetings</a>
+            <Link to="/app/meetings">
+            <a href="#">Meetings</a></Link>
           </li>
           <li>
-            <a href="#">Settings</a>
+            <Link to="/app/profile">
+            <a href="#">Settings</a></Link>
+          </li>
+          <li>
+            <Link to="/" onClick={logout}><a>Logout</a></Link>
           </li>
         </ul>
 
