@@ -23,6 +23,7 @@ function Dashboard(props) {
           <Modal
             isShowing={isShowing}
             hide={toggle}
+            title={"New Project"}
           >
             <ProjectForm />
           </Modal>

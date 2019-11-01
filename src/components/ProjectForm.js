@@ -3,9 +3,9 @@ import React from 'react';
 function ProjectForm(props) {
 
   return (
-    <div>
+    <div className="project-form">
       <form>
-        <label>
+        <label className="project-form-item">
           Title
           <input type="text" name="title" required/>
         </label>
