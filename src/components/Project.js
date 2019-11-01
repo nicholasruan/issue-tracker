@@ -5,7 +5,6 @@ function Project(props) {
   return (
     <div>
       Project
-      <List />
     </div>
   )
 }
