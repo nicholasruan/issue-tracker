@@ -25,11 +25,11 @@ function Dashboard(props) {
             hide={toggle}
             title={"New Project"}
           >
-            <ProjectForm />
+            <ProjectForm hide={toggle} routerProps={props} />
           </Modal>
         </div>
       </div>
-      
+
       <div>
         Widgets
       </div>

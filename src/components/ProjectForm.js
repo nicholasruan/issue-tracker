@@ -24,6 +24,8 @@ function ProjectForm(props) {
     })
     .then(function (response) {
       console.log(response);
+      props.hide();
+      props.routerProps.history.push(`/app/projects/${response.data.proj_id}`);
     })
     .catch(function (error) {
       const message = error.response || '';
