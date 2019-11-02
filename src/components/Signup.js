@@ -21,7 +21,7 @@ function Signup(props) {
       });
     }
 
-    axios.post('http://localhost:5000/api/users/register', {
+    axios.post('https://issue-base-db.herokuapp.com/api/users/register', {
       first_name: firstName,
       last_name: lastName,
       email: email,
