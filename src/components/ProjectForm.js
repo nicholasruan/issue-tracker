@@ -14,7 +14,8 @@ function ProjectForm(props) {
 
     axios.post('https://issue-base-db.herokuapp.com/api/projects/create', {
       title: title,
-      user_id: localStorage.user_id
+      user_id: localStorage.user_id,
+      members: [localStorage.user_id]
     },{
       headers: {
         'Content-Type': 'application/json',

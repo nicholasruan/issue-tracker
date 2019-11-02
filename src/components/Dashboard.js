@@ -29,6 +29,7 @@ function Dashboard(props) {
           </Modal>
         </div>
       </div>
+      
       <div>
         Widgets
       </div>

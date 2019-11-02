@@ -33,18 +33,18 @@ function Navbar(props) {
         </div>
         <ul className="nav-links">
           <li>
-            <Link to="/app"><a href="#">Dashboard</a></Link>
+            <Link to="/app">Dashboard</Link>
           </li>
           <li>
             <Link to="/app/meetings">
-            <a href="#">Meetings</a></Link>
+            Meetings</Link>
           </li>
           <li>
             <Link to="/app/profile">
-            <a href="#">Settings</a></Link>
+            Settings</Link>
           </li>
           <li>
-            <Link to="/" onClick={logout}><a>Logout</a></Link>
+            <Link to="/" onClick={logout}>Logout</Link>
           </li>
         </ul>
 
