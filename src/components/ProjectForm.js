@@ -44,7 +44,7 @@ function ProjectForm(props) {
       <form onSubmit={newProject}>
         <label className="project-form-item">
           Title
-          <input type="text" name="title" onChange={handleChange} required/>
+          <input type="text" className="project-form-input" name="title" onChange={handleChange} required/>
         </label>
         <button type="submit">
           Create
