@@ -1,11 +1,36 @@
+/* Project Card Component */
+.project-card-container {
+  width: 100%;
+  background-color: #d7f2fa;
+  height: 50px;
+  border-radius: 5px;
+  transition: all .2s ease-in;
+}
+
+.project-card-container:hover {
+  background-color: #a3c2cb;
+}
+
+.project-card-link {
+  text-decoration: none;
+}
+
+.project-card-text {
+  padding: 15px;
+  color: black;
+  font-size: 15px;
+  font-weight: 500;
+}
+
 /* Dashboard Component */
 .dashboard {
   display: flex;
   justify-content: space-around;
 }
 
-.dashboard-projects {
-
+.dashboard-projects ul {
+  list-style: none;
+  padding: 0;
 }
 
 /* ProjectForm Component */
@@ -130,12 +155,22 @@
 }
 
 .modal-button {
+  width: 215px;
   cursor: pointer;
   font-size: .9rem;
-  font-weight: 700;
-  border-radius: 3px;
+  font-weight: 400;
+  border-radius: 5px;
   padding: .3rem 1rem;
-  margin-left: .5rem;
+  background-color: #e5e9ea;
+  transition: all .2s ease-in;
+}
+
+.modal-button:hover {
+  background-color: #b7b7b7;
+}
+
+button.modal-button:focus {
+  outline: none;
 }
 
 .button-default {
@@ -331,8 +366,6 @@ nav.menu {
     display: block;
   }
 }
-
-
 
 .nav-active {
   transform: translateX(0%);
