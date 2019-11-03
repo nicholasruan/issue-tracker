@@ -44,6 +44,14 @@
   padding-bottom: .5rem;
 }
 
+input.project-form-input {
+  width: 200px;
+  padding: 3px;
+  border-radius: 3px;
+  border: 0.6px solid black;
+  font-family: Avenir Next;
+}
+
 /* Modal Component */
 
 .modal-title {
