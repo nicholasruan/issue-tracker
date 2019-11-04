@@ -13,7 +13,7 @@ function Dashboard(props) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    axios.get(`https://issue-base-db.herokuapp.com/api/users/${localStorage.user_id}`, 
+    axios.get(`https://issue-base-db.herokuapp.com/api/users/${localStorage.user_id}`,
     {
       headers: {
         'Content-Type': 'application/json',
@@ -32,12 +32,12 @@ function Dashboard(props) {
     <div className="dashboard">
       <div>
         <h2>Ongoing Projects</h2>
-        {isLoading ? <h3>Loading...</h3> : 
+        {isLoading ? <h3>Loading...</h3> :
           <div className="dashboard-projects">
             <ul>
               {projectList.map(item => (
                 <li key={item._id}>
-                  <ProjectCard 
+                  <ProjectCard
                     id={item._id}
                     name={item.title}
                   />
