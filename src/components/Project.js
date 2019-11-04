@@ -18,6 +18,9 @@ function Project(props) {
   useEffect(() => {
     const path = window.location.pathname.split('/');
     setId(path[3]);
+
+    if (!id) return console.log('No Project Yet');
+
     axios.get(`https://issue-base-db.herokuapp.com/api/projects/${id}`, {
       headers: {
         'Content-Type': 'application/json',
@@ -44,6 +47,13 @@ function Project(props) {
     )
     .then(function (response) {
       console.log(response);
+      Swal.fire({
+        position: 'top-end',
+        title: 'Project Deleted',
+        showConfirmButton: false,
+        timer: 3000,
+        width: 500
+      });
       props.history.push('/app')
     })
     .catch(function (error) {
