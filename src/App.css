@@ -1,3 +1,40 @@
+/* Add Member Form Component */
+.add-member-form-container {
+  padding: 15px;
+  width: 150px;
+  height: 75px;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  box-shadow: 2px 1px 12px #abaaaa;
+  display: block;
+}
+
+.add-member-form-input {
+  width: 94%;
+  padding: 3px;
+  margin-bottom: 7px;
+  border-radius: 3px;
+  border: 0.6px solid black;
+  font-family: Avenir Next;
+}
+
+.add-member-button {
+  background-color: #F0F0F0;
+  font-family: Avenir Next;
+  font-size: .85rem;
+  height: 23px;
+  border-radius: 4px;
+}
+
+.add-member-button:focus {
+  outline: none;
+}
+
+.add-member-button:hover {
+  cursor: pointer;
+}
+
+
 /* Project Component */
 .project-container {
   display: flex;
@@ -50,6 +87,11 @@
 .add-circle {
   background-color: #d3d3d3;
   cursor: pointer;
+  transition: all .2s ease-in;
+}
+
+.add-circle:hover {
+  background-color: #e4e4e4;
 }
 
 .add-circle p {
@@ -386,7 +428,7 @@ nav.menu {
   justify-content: space-around;
   background-color: #034862;
   box-shadow: 0px 5px 20px #454545c4;
-  height: 8vh;
+  height: 58px;
   max-height: 65px;
 }
 
