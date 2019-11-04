@@ -15,6 +15,7 @@ function Project(props) {
   const [title, setTitle] = useState('');
   const [members, setMembers] = useState([]);
   const {isShowing, toggle} = useModal();
+  const [showAddMembers, setShowAddMembers] = useState(false);
 
   useEffect(() => {
     const path = window.location.pathname.split('/');
@@ -70,7 +71,7 @@ function Project(props) {
   }
 
   const addMembers = () => {
-    console.log(members);
+    setShowAddMembers(!showAddMembers);
   }
 
   return (
@@ -91,14 +92,12 @@ function Project(props) {
               </div>
             ))}
             <div className="add-member-container">
-              <div className={`member-circle add-circle`} onClick={addMembers}>
-                <p>+</p>
+              <div className={`member-circle add-circle`}  onClick={addMembers}>
+                <p className={showAddMembers ? 'close-add-members-form' : 'open-add-members-form'}>+</p>
               </div>
-              <AddMemberForm 
-
-              />
+              <AddMemberForm showAddMembers={showAddMembers}/>
             </div>
-            
+
           </div>
         </div>
       )}

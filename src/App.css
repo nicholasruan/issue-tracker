@@ -7,6 +7,7 @@
   border: 1px solid #cccccc;
   box-shadow: 2px 1px 12px #abaaaa;
   display: block;
+  animation: fadein 0.5s;
 }
 
 .add-member-form-input {
@@ -33,7 +34,6 @@
 .add-member-button:hover {
   cursor: pointer;
 }
-
 
 /* Project Component */
 .project-container {
@@ -88,6 +88,15 @@
   background-color: #d3d3d3;
   cursor: pointer;
   transition: all .2s ease-in;
+}
+
+.open-add-members-form {
+  transition: all 0.3s ease-in;
+}
+
+.close-add-members-form {
+  transform: rotate(45deg);
+  transition: all 0.3s ease-in;
 }
 
 .add-circle:hover {
