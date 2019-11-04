@@ -8,7 +8,7 @@ function Project(props) {
   const [members, setMembers] = useState([]);
 
   useEffect(() => {
-    const path = window.location.pathname.split('/');
+    const path = window.locationnpm.pathname.split('/');
     setId(path[3]);
     axios.get(`https://issue-base-db.herokuapp.com/api/projects/${id}`, {
       headers: {
