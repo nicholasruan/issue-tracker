@@ -21,7 +21,7 @@ function Dashboard(props) {
       }
     }).then(res => {
       console.log(res);
-      setProjects(res.data.project_ids);
+      setProjects(res.data.projects);
       setIsLoading(false);
     }).catch(err => {
       console.log(err);
@@ -36,10 +36,10 @@ function Dashboard(props) {
           <div className="dashboard-projects">
             <ul>
               {projectList.map(item => (
-                <li key={item[0]}>
+                <li key={item._id}>
                   <ProjectCard 
-                    id={item[0]}
-                    name={item[1]}
+                    id={item._id}
+                    name={item.title}
                   />
                 </li>
               ))}
