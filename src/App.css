@@ -26,10 +26,32 @@
   outline: none;
 }
 
+.member-container {
+  margin-left: 40px;
+  display: flex;
+}
+
 .member-circle {
-  width: 30px;
-  height: 30px;
-  background-color: grey;
+  border: 4px solid white;
+  margin-top: 13px;
+  margin-right: -12px;
+  width: 35px;
+  height: 35px;
+  background-color: #d2eaee;
+  border-radius: 30px;
+}
+
+.member-circle p {
+  margin: 0;
+  padding: 7px 6px;
+}
+
+.add-circle {
+  background-color: #d3d3d3;
+}
+
+.add-circle p {
+  padding: 7px 12px;
 }
 
 /* Project Card Component */
