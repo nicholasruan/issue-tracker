@@ -32,7 +32,6 @@
 }
 
 .member-circle {
-<<<<<<< Updated upstream
   border: 4px solid white;
   margin-top: 13px;
   margin-right: -12px;
@@ -54,12 +53,6 @@
 
 .add-circle p {
   padding: 7px 12px;
-=======
-  margin-top: 29px;
-  width: 30px;
-  height: 30px;
-  background-color: grey;
->>>>>>> Stashed changes
 }
 
 .project-icons {
