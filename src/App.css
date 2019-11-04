@@ -1,3 +1,32 @@
+/* Project Component */
+.project-container {
+  display: flex;
+  margin: 1rem 4rem;
+}
+
+.project-header {
+  display: inline-flex;
+}
+
+.project-title {
+  padding-right: 4rem;
+  font-weight: 600;
+}
+
+.add-list-button {
+  margin-top: 24px;
+  background-color: #F0F0F0;
+  font-family: Avenir Next;
+  font-size: .85rem;
+  height: 23px;
+  border-radius: 4px;
+}
+
+.add-list-button:focus {
+  outline: none;
+}
+
+
 /* Project Card Component */
 .project-card-container {
   width: 100%;
@@ -306,7 +335,7 @@ h2#swal2-title {
 .nav-links a {
   text-decoration: none;
   color: white;
-  padding-right: 25px;
+  margin-right: 25px
 }
 
 nav.menu {
