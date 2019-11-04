@@ -36,7 +36,7 @@ function Project(props) {
     }).catch(err => {
       console.log(err);
     })
-  }, [id]);
+  }, [id, showAddMembers]);
 
   const deleteProject = () => {
     axios.delete(`https://issue-base-db.herokuapp.com/api/projects/${id}/delete`, { data: {
@@ -53,6 +53,7 @@ function Project(props) {
         position: 'top-end',
         title: 'Project Deleted',
         showConfirmButton: false,
+        customClass: 'success',
         timer: 3000,
         width: 500
       });
@@ -70,7 +71,7 @@ function Project(props) {
     })
   }
 
-  const addMembers = () => {
+  const toggleAddMembers = () => {
     setShowAddMembers(!showAddMembers);
   }
 
@@ -92,10 +93,14 @@ function Project(props) {
               </div>
             ))}
             <div className="add-member-container">
-              <div className={`member-circle add-circle`}  onClick={addMembers}>
+              <div className={`member-circle add-circle`}  onClick={toggleAddMembers}>
                 <p className={showAddMembers ? 'close-add-members-form' : 'open-add-members-form'}>+</p>
               </div>
-              <AddMemberForm showAddMembers={showAddMembers}/>
+              <AddMemberForm
+                showAddMembers={showAddMembers}
+                toggleAddMembers={toggleAddMembers}
+                projectId={id}
+              />
             </div>
 
           </div>
