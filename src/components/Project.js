@@ -17,7 +17,7 @@ function Project(props) {
       }
     }).then(res => {
       console.log(res.data);
-      setTitle(res.data.title);
+      setTitle(res.data.project.title);
       setMembers(res.data.members);
       setIsLoading(false);
     }).catch(err => {
@@ -32,7 +32,10 @@ function Project(props) {
           <h2 className="project-title">{title}</h2>
           <button className="add-list-button">+ add new list</button>
           {members.map((members, key) => (
-            <p key={key}>{members}</p>
+            <div className="member-circle">
+              <p key={key}>{members.first_name.substring(0,1)
+              }{members.last_name.substring(0,1)}</p>
+            </div>
           ))}
         </div>
       )}

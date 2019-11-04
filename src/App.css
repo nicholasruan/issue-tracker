@@ -26,6 +26,11 @@
   outline: none;
 }
 
+.member-circle {
+  width: 30px;
+  height: 30px;
+  background-color: grey;
+}
 
 /* Project Card Component */
 .project-card-container {
