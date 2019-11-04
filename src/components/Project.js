@@ -68,25 +68,17 @@ function Project(props) {
             <FontAwesomeIcon icon={faEdit} className="project-actions" onClick={toggle} />
           </div>
           <button className="add-list-button">+ add new list</button>
-<<<<<<< Updated upstream
           <div className="member-container">
-            {members.map((members, key) => (
-              <div className="member-circle">
-                <p key={key}>{members.first_name.substring(0,1)
-                }{members.last_name.substring(0,1)}</p>
-              </div>
-            ))}
+            <div className="member-circle">
+              {members.map((members, key) => (
+                  <p key={key}>{members.first_name.substring(0,1)
+                  }{members.last_name.substring(0,1)}</p>
+              ))}
+            </div>
             <div className={`member-circle add-circle`}>
               <p>+</p>
             </div>
-=======
-          <div className="member-circle">
-            {members.map((members, key) => (
-                <p key={key}>{members.first_name.substring(0,1)
-                }{members.last_name.substring(0,1)}</p>
-            ))}
->>>>>>> Stashed changes
-          </div>
+          </div>          
         </div>
       )}
       <Modal
