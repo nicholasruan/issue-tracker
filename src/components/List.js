@@ -4,7 +4,7 @@ import Card from './Card';
 function List(props) {
   return (
     <div className="list-container">
-      <Card />
+      {props.title}
     </div>
   )
 }

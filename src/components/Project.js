@@ -33,10 +33,9 @@ function Project(props) {
         'auth-token': localStorage.token
       }
     }).then(res => {
-      console.log(res.data);
       setTitle(res.data.project.title);
       setMembers(res.data.members);
-      setLists(res.data.project.list_ids);
+      setLists(res.data.lists);
       setIsLoading(false);
     }).catch(err => {
       console.log(err);
@@ -83,6 +82,7 @@ function Project(props) {
 
   const addList = () => {
     setNewList(true);
+    document.querySelector('.project-body').scrollLeft += 1000000;
   }
 
   return (
@@ -128,13 +128,18 @@ function Project(props) {
       </div>
       <div className="project-body">
         {lists.map((list, key) =>(
-          <List key={key} /> 
+          <List 
+            key={list._id}
+            title={list.title}
+            id={list._id}
+          /> 
         ))}
+        
         {newList ? 
           <AddListForm 
             showList={setNewList}
             projId={id}
-          /> : null }
+          /> :  <div className="jank"></div>}
       </div>
     </div>
   )
