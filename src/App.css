@@ -49,6 +49,7 @@
 
 .add-circle {
   background-color: #d3d3d3;
+  cursor: pointer;
 }
 
 .add-circle p {
