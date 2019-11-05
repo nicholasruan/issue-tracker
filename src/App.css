@@ -1,6 +1,18 @@
 .jank {
   min-width: 300px;
 }
+
+/* EditListForm Component */
+
+.list-edit-input {
+  width: 94%;
+  padding: 3px;
+  margin-bottom: 7px;
+  border-radius: 3px;
+  border: 0.6px solid black;
+  font-family: Avenir Next;
+}
+
 /* ListMenu Component */
 
 .list-menu-item {

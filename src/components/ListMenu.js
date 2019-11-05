@@ -6,6 +6,8 @@ import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 function ListMenu(props) {
+  const { toggleListAction, toggleShowListEdit } = props
+
   const deleteList = () => {
     axios.delete(`https://issue-base-db.herokuapp.com/api/lists/${props.listId}/delete`, { data: {
       list_id: props.listId,
@@ -25,7 +27,7 @@ function ListMenu(props) {
         timer: 3000,
         width: 500
       });
-      props.toggleListAction(true);
+      toggleListAction(true);
     })
     .catch(function (error) {
       const message = error.response || '';
@@ -41,7 +43,7 @@ function ListMenu(props) {
 
   return (
     <div className="list-menu-container">
-      <div className="list-menu-item">
+      <div className="list-menu-item" onClick={toggleShowListEdit}>
         <FontAwesomeIcon icon={faEdit} /> Edit
       </div>
       <div className="list-menu-item" onClick={deleteList}>
