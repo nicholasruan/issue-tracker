@@ -20,6 +20,7 @@ function Project(props) {
   const [showAddMembers, setShowAddMembers] = useState(false);
   const [newList, setNewList] = useState(false);
   const [lists, setLists] = useState([]);
+  const [listAction, setListAction] = useState(false);
 
   useEffect(() => {
     const path = window.location.pathname.split('/');
@@ -37,11 +38,12 @@ function Project(props) {
       setMembers(res.data.members);
       setLists(res.data.lists);
       setIsLoading(false);
+      setListAction(false);
     }).catch(err => {
       console.log(err);
     })
 
-  }, [id, showAddMembers, newList]);
+  }, [id, showAddMembers, newList, listAction]);
 
   const deleteProject = () => {
     axios.delete(`https://issue-base-db.herokuapp.com/api/projects/${id}/delete`, { data: {
@@ -128,15 +130,16 @@ function Project(props) {
       </div>
       <div className="project-body">
         {lists.map((list, key) =>(
-          <List 
+          <List
             key={list._id}
             title={list.title}
             id={list._id}
-          /> 
+            toggleListAction={setListAction}
+          />
         ))}
-        
-        {newList ? 
-          <AddListForm 
+
+        {newList ?
+          <AddListForm
             showList={setNewList}
             projId={id}
           /> :  <div className="jank"></div>}
