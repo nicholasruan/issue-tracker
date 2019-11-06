@@ -11,7 +11,7 @@ function AddListForm(props) {
 
   const newList = (e) => {
     e.preventDefault();
-    console.log(props.projId);
+    
     axios.post('https://issue-base-db.herokuapp.com/api/lists/create', {
       title: name,
       project_id: props.projId

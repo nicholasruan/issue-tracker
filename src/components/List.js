@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 import ListMenu from './ListMenu';
 import EditListForm from './EditListForm';
 import Card from './Card';
@@ -6,9 +8,23 @@ import Card from './Card';
 function List(props) {
   const [showListMenu, setShowListMenu] = useState(false);
   const [showListEdit, setShowListEdit] = useState(false);
-  const { toggleListAction, title, id, moveList, index, projListSize } = props
+  const { toggleListAction, title, id, index, projListSize, lists, projectId } = props;
 
-  const toggleListMenu = () => {
+  useEffect(() => {
+    if (showListMenu) {
+      document.body.addEventListener('click', (e) => {
+        const listMenuItem = 'list-menu-item';
+        const listSettings = 'list-settings';
+        const listMenuContainer = 'list-menu-container';
+
+        if (listMenuItem !== e.target.className && listSettings !== e.target.className && listMenuContainer !== e.target.className) {
+          setShowListMenu(false);
+        }
+      });
+    }
+  })
+
+  const toggleListMenu = (e) => {
     setShowListMenu(!showListMenu);
   }
 
@@ -24,6 +40,48 @@ function List(props) {
     }
   }
 
+  const moveList = (direction, idx) => {
+    let projLists = [];
+
+    for (let i = 0; i < lists.length; i++) {
+      projLists.push(lists[i]._id);
+    }
+
+    if (direction === "left") {
+      let tempIdx = projLists[idx - 1];;
+      projLists[idx - 1] = projLists[idx];
+      projLists[idx] = tempIdx;
+    } else if (direction === 'right') {
+      let tempIdx = projLists[idx + 1];;
+      projLists[idx + 1] = projLists[idx];
+      projLists[idx] = tempIdx;
+    }
+
+    axios.put(`https://issue-base-db.herokuapp.com/api/projects/${projectId}/edit`, {
+     list_ids: projLists
+    },{
+      headers: {
+        'Content-Type': 'application/json',
+        'auth-token': localStorage.token
+      }
+    })
+    .then(function (response) {
+      console.log(response);
+      toggleListMenu();
+      toggleListAction(true);
+    })
+    .catch(function (error) {
+      const message = error.response || '';
+      Swal.fire({
+        position: 'top-end',
+        title: message.data,
+        showConfirmButton: false,
+        timer: 3000,
+        width: 500
+      });
+    })
+  }
+
   return (
     <div className="list-container">
       <div className="list-header">
@@ -33,10 +91,10 @@ function List(props) {
         </div>
       </div>
       <div className="list-menu">
-        {showListMenu ? 
-          <ListMenu 
-            listId={id} 
-            toggleListAction={toggleListAction} 
+        {showListMenu ?
+          <ListMenu
+            listId={id}
+            toggleListAction={toggleListAction}
             toggleShowListEdit={toggleShowListEdit}
             moveList={moveList}
             index={index}

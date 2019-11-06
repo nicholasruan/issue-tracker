@@ -72,8 +72,8 @@ function ListMenu(props) {
         </>
       )
     }
-  } 
-  
+  }
+
 
   return (
     <div className="list-menu-container">

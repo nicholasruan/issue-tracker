@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 
 function EditListForm(props) {
   const [title, setTitle] = useState(props.title);
-  const { listId, toggleListAction, toggleShowListEdit, toggleListMenu } = props
+  const { listId, toggleListAction, toggleShowListEdit, toggleListMenu } = props;
 
   const handleChange = (e) => {
     setTitle(e.target.value);
