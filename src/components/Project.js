@@ -43,7 +43,7 @@ function Project(props) {
       console.log(err);
     })
 
-  }, [id, showAddMembers, newList, listAction]);
+  }, [id, showAddMembers, newList, listAction, lists]);
 
   const deleteProject = () => {
     axios.delete(`https://issue-base-db.herokuapp.com/api/projects/${id}/delete`, { data: {
@@ -85,6 +85,48 @@ function Project(props) {
   const addList = () => {
     setNewList(true);
     document.querySelector('.project-body').scrollLeft += 1000000;
+  }
+
+  const moveList = (direction, idx) => {
+    console.log(lists);
+    console.log(idx);
+    let projLists = [];
+
+    for (let i = 0; i < lists.length; i++) {
+      projLists.push(lists[i]._id);
+    }
+
+    if (direction === "left") {
+      let tempIdx = projLists[idx - 1];;
+      projLists[idx - 1] = projLists[idx];
+      projLists[idx] = tempIdx;
+    } else if (direction === 'right') {
+      let tempIdx = projLists[idx + 1];;
+      projLists[idx + 1] = projLists[idx];
+      projLists[idx] = tempIdx;
+    }
+
+    axios.put(`https://issue-base-db.herokuapp.com/api/projects/${id}/edit`, {
+     list_ids: projLists
+    },{
+      headers: {
+        'Content-Type': 'application/json',
+        'auth-token': localStorage.token
+      }
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      const message = error.response || '';
+      Swal.fire({
+        position: 'top-end',
+        title: message.data,
+        showConfirmButton: false,
+        timer: 3000,
+        width: 500
+      });
+    })
   }
 
   return (
@@ -132,9 +174,12 @@ function Project(props) {
         {lists.map((list, key) =>(
           <List
             key={list._id}
+            index={key}
             title={list.title}
             id={list._id}
             toggleListAction={setListAction}
+            moveList={moveList}
+            projListSize={lists.length}
           />
         ))}
 
