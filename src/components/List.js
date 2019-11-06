@@ -19,7 +19,7 @@ function List(props) {
   return (
     <div className="list-container">
       <div className="list-header">
-        {showListEdit ? <EditListForm title={title} toggleListAction={toggleListAction} toggleShowListEdit={toggleShowListEdit} toggleListMenu={toggleListMenu} listId={id} /> : title}
+        {showListEdit ? <EditListForm title={title} toggleListAction={toggleListAction} toggleShowListEdit={toggleShowListEdit} toggleListMenu={toggleListMenu} listId={id} /> : <h3 className="list-title">{title}</h3>}
         <div className="list-settings" onClick={toggleListMenu}>
           ...
         </div>

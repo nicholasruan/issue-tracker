@@ -38,10 +38,10 @@ function AddListForm(props) {
   }
 
   return (
-    <div className="list-container">
+    <div className="list-container add-form">
       <form onSubmit={newList}>
         <input type="text" placeholder="Name" value={name} onChange={handleChange} />
-        <button type="submit">donezo</button>
+        <button type="submit">add list</button>
       </form>
     </div>
   )

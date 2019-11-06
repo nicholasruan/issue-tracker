@@ -34,6 +34,10 @@
   position: relative;
 }
 
+.list-title {
+  margin: 6px;
+}
+
 .list-menu {
   float: right;
   display: flex;
@@ -64,9 +68,21 @@
   background-color: #F0F0F0;
   height: 100%;
   min-width: 300px;
+  min-height: 150px;
   margin-right: 10px;
   z-index: 5;
 }
+
+.add-form {
+  height: 100px;
+}
+
+.add-form input {
+  margin-left: 5px;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
 
 /* Add Member Form Component */
 .add-member-form-container {
