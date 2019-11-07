@@ -21,14 +21,6 @@ function ListMenu(props) {
     )
     .then(function (response) {
       console.log(response);
-      Swal.fire({
-        position: 'top-end',
-        title: 'List Deleted',
-        showConfirmButton: false,
-        customClass: 'success',
-        timer: 3000,
-        width: 500
-      });
       toggleListAction(true);
     })
     .catch(function (error) {

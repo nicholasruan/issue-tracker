@@ -82,6 +82,12 @@ function List(props) {
     })
   }
 
+  const renderCards = () => {
+    return (
+      <Card />
+    )
+  }
+
   return (
     <div className="list-container">
       <div className="list-header">
@@ -102,8 +108,11 @@ function List(props) {
           /> : null}
       </div>
       <div className="list-body">
-        <Card />
+        {renderCards}
       </div>
+      <div className="list-footer">
+          <button className="add-list-button add-card">Add a new card</button>
+        </div>
     </div>
   )
 }

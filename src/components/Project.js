@@ -43,7 +43,7 @@ function Project(props) {
       console.log(err);
     })
 
-  }, [id, showAddMembers, newList, listAction, lists]);
+  }, [id, showAddMembers, newList, listAction]);
 
   const deleteProject = () => {
     axios.delete(`https://issue-base-db.herokuapp.com/api/projects/${id}/delete`, { data: {
@@ -146,7 +146,7 @@ function Project(props) {
           <AddListForm
             showList={setNewList}
             projId={id}
-          /> :  <div className="jank"></div>}
+          /> :  <div className="padded-section"></div>}
       </div>
     </div>
   )

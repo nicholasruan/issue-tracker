@@ -23,15 +23,6 @@ function EditListForm(props) {
     })
     .then(function (response) {
       console.log(response);
-      Swal.fire({
-        position: 'top-end',
-        title: 'List Updated',
-        showConfirmButton: false,
-        customClass: 'success',
-        timer: 3000,
-        width: 500
-      });
-      toggleListMenu();
       toggleShowListEdit();
       toggleListAction(true);
     })
