@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import AddListForm from './AddListForm';
+import { DragDropContext } from 'react-beautiful-dnd';
 
 function Project(props) {
   const [id, setId] = useState('');
@@ -87,67 +88,73 @@ function Project(props) {
     document.querySelector('.project-body').scrollLeft += 1000000;
   }
 
+  const onDragEnd = (result) => {
+    console.log(result);
+  }
+
   return (
     <div>
-      <div className="project-container">
-        {isLoading ? (<h3>Loading...</h3>) : (
-          <div>
-            <div className="project-header">
-              <h2 className="project-title">{title}</h2>
-              <div className="project-icons">
-                <FontAwesomeIcon icon={faTrashAlt} className="project-actions" onClick={deleteProject} />
-                <FontAwesomeIcon icon={faEdit} className="project-actions" onClick={toggle} />
-              </div>
-              <button className="add-list-button" onClick={addList}>+ add new list</button>
-              <div className="member-container">
-                {members.map((members, key) => (
-                  <div key={key} className="member-circle">
-                    <p>{members.first_name.substring(0,1)
-                    }{members.last_name.substring(0,1)}</p>
+      <DragDropContext onDragEnd={onDragEnd}>
+        <div className="project-container">
+          {isLoading ? (<h3>Loading...</h3>) : (
+            <div>
+              <div className="project-header">
+                <h2 className="project-title">{title}</h2>
+                <div className="project-icons">
+                  <FontAwesomeIcon icon={faTrashAlt} className="project-actions" onClick={deleteProject} />
+                  <FontAwesomeIcon icon={faEdit} className="project-actions" onClick={toggle} />
+                </div>
+                <button className="add-list-button" onClick={addList}>+ add new list</button>
+                <div className="member-container">
+                  {members.map((members, key) => (
+                    <div key={key} className="member-circle">
+                      <p>{members.first_name.substring(0,1)
+                      }{members.last_name.substring(0,1)}</p>
+                    </div>
+                  ))}
+                  <div className="add-member-container">
+                    <div className={`member-circle add-circle`}  onClick={toggleAddMembers}>
+                      <p className={showAddMembers ? 'close-add-members-form' : 'open-add-members-form'}>+</p>
+                    </div>
+                    <AddMemberForm
+                      showAddMembers={showAddMembers}
+                      toggleAddMembers={toggleAddMembers}
+                      projectId={id}
+                    />
                   </div>
-                ))}
-                <div className="add-member-container">
-                  <div className={`member-circle add-circle`}  onClick={toggleAddMembers}>
-                    <p className={showAddMembers ? 'close-add-members-form' : 'open-add-members-form'}>+</p>
-                  </div>
-                  <AddMemberForm
-                    showAddMembers={showAddMembers}
-                    toggleAddMembers={toggleAddMembers}
-                    projectId={id}
-                  />
                 </div>
               </div>
             </div>
-          </div>
-        )}
-        <Modal
-          isShowing={isShowing}
-          hide={toggle}
-          title={"Edit Project"}
-        >
-          <ProjectForm hide={toggle} routerProps={props} title={title} editMode={true} projectId={id} setTitle={setTitle} />
-        </Modal>
-      </div>
-      <div className="project-body">
-        {lists.map((list, key) =>(
-          <List
-            key={list._id}
-            index={key}
-            title={list.title}
-            id={list._id}
-            lists={lists}
-            projectId={id}
-            toggleListAction={setListAction}
-            projListSize={lists.length}
-          />
-        ))}
+          )}
+          <Modal
+            isShowing={isShowing}
+            hide={toggle}
+            title={"Edit Project"}
+          >
+            <ProjectForm hide={toggle} routerProps={props} title={title} editMode={true} projectId={id} setTitle={setTitle} />
+          </Modal>
+        </div>
+        <div className="project-body">
+          {lists.map((list, key) =>(
+            <List
+              key={list._id}
+              index={key}
+              title={list.title}
+              id={list._id}
+              lists={lists}
+              projectId={id}
+              toggleListAction={setListAction}
+              projListSize={lists.length}
+            />
+          ))}
 
-        {newList ?
-          <AddListForm
-            showList={setNewList}
-            projId={id}
-          /> :  <div className="padded-section"></div>}
-      </div>
+          {newList ?
+            <AddListForm
+              showList={setNewList}
+              projId={id}
+            /> :  <div className="padded-section"></div>}
+        </div>
+      </DragDropContext>
     </div>
   )
 }

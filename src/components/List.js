@@ -3,12 +3,17 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import ListMenu from './ListMenu';
 import EditListForm from './EditListForm';
+import CardList from './CardList';
 import Card from './Card';
+import { Droppable } from 'react-beautiful-dnd';
 
 function List(props) {
   const [showListMenu, setShowListMenu] = useState(false);
   const [showListEdit, setShowListEdit] = useState(false);
   const { toggleListAction, title, id, index, projListSize, lists, projectId } = props;
+  const testCards = [
+    'test', 'test1', 'test2', 'test3', 'test4'
+  ]
 
   useEffect(() => {
     if (showListMenu) {
@@ -82,12 +87,6 @@ function List(props) {
     })
   }
 
-  const renderCards = () => {
-    return (
-      <Card />
-    )
-  }
-
   return (
     <div className="list-container">
       <div className="list-header">
@@ -108,7 +107,14 @@ function List(props) {
           /> : null}
       </div>
       <div className="list-body">
-        {renderCards}
+        <Droppable droppableId={id}>
+          {(provided) => (
+            <CardList innerRef={provided.innerRef} {...provided.droppableProps}>
+              {testCards.map((card, index) => <Card key={index} name={card} index={index}/>)}
+              {provided.placeholder}
+            </CardList>
+          )}
+        </Droppable>
       </div>
       <div className="list-footer">
           <button className="add-list-button add-card">Add a new card</button>
