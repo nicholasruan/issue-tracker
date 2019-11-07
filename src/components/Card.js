@@ -3,15 +3,15 @@ import { Draggable } from 'react-beautiful-dnd';
 
 function Card(props) {
   const { name, index } = props;
-
+  
   return (
     <div>
-      <Draggable droppableId={index} index={index}>
+      <Draggable draggableId={index.toString()} index={index.toString()}>
         {(provided) => (
           <div
             {...provided.draggableProps}
             {...provided.dragHandleProps}
-            innerRef={provided.innerRef}
+            ref={provided.innerRef}
           >
             {name}
           </div>
