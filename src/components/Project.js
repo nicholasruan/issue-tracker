@@ -89,7 +89,20 @@ function Project(props) {
   }
 
   const onDragEnd = (result) => {
-    console.log(result);
+    const { destination, source, draggableId } = result;
+
+    if (!destination) {
+      return;
+    }
+
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) {
+      return;
+    }
+
+
   }
 
   return (

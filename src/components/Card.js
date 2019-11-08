@@ -2,11 +2,11 @@ import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 
 function Card(props) {
-  const { name, index } = props;
+  const { name, index, id } = props;
   
   return (
     <div>
-      <Draggable draggableId={index.toString()} index={index.toString()}>
+      <Draggable draggableId={id} index={index.toString()}>
         {(provided) => (
           <div
             {...provided.draggableProps}

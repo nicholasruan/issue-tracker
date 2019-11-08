@@ -9,7 +9,9 @@ import { Droppable } from 'react-beautiful-dnd';
 function List(props) {
   const [showListMenu, setShowListMenu] = useState(false);
   const [showListEdit, setShowListEdit] = useState(false);
+  const [cardList, setCardList] = useState([]);
   const { toggleListAction, title, id, index, projListSize, lists, projectId } = props;
+
   const testCards = [
     'test', 'test1', 'test2'
   ]
@@ -25,8 +27,20 @@ function List(props) {
           setShowListMenu(false);
         }
       });
-    }
-  })
+    } 
+
+    axios.get(`https://issue-base-db.herokuapp.com/api/lists/${id}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'auth-token': localStorage.token
+      }
+    }).then(res => {
+      console.log(res.data.cards);
+      setCardList(res.data.cards);
+    }).catch(err => {
+      console.log(err);
+    })
+  }, []);
 
   const toggleListMenu = (e) => {
     setShowListMenu(!showListMenu);
@@ -109,7 +123,7 @@ function List(props) {
         <Droppable droppableId={id}>
           {provided => (
             <div ref={provided.innerRef} {...provided.droppableProps}>
-              {testCards.map((card, index) => <Card key={index.toString()} index={index.toString()} name={card}/>)}
+              {cardList.map((card, index) => <Card key={card._id} index={index.toString()} name={card.name} id={card._id}/>)}
               {provided.placeholder}
             </div>
           )}
