@@ -122,7 +122,7 @@ function List(props) {
       <div className="list-body">
         <Droppable droppableId={id}>
           {provided => (
-            <div ref={provided.innerRef} {...provided.droppableProps}>
+            <div ref={provided.innerRef} {...provided.droppableProps} className="droppable-area">
               {cardList.map((card, index) => <Card key={card._id} index={index.toString()} name={card.name} id={card._id}/>)}
               {provided.placeholder}
             </div>

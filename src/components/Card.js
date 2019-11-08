@@ -12,6 +12,7 @@ function Card(props) {
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             ref={provided.innerRef}
+            className="card-body"
           >
             {name}
           </div>

@@ -112,28 +112,32 @@ function Project(props) {
           {isLoading ? (<h3>Loading...</h3>) : (
             <div>
               <div className="project-header">
-                <h2 className="project-title">{title}</h2>
-                <div className="project-icons">
-                  <FontAwesomeIcon icon={faTrashAlt} className="project-actions" onClick={deleteProject} />
-                  <FontAwesomeIcon icon={faEdit} className="project-actions" onClick={toggle} />
+                <div id="project-section">
+                  <h2 className="project-title">{title}</h2>
                 </div>
-                <button className="add-list-button" onClick={addList}>+ add new list</button>
-                <div className="member-container">
-                  {members.map((members, key) => (
-                    <div key={key} className="member-circle">
-                      <p>{members.first_name.substring(0,1)
-                      }{members.last_name.substring(0,1)}</p>
+                <div id="project-section2">
+                  <div className="project-icons">
+                    <FontAwesomeIcon icon={faTrashAlt} className="project-actions" onClick={deleteProject} />
+                    <FontAwesomeIcon icon={faEdit} className="project-actions" onClick={toggle} />
+                  </div>
+                  <button className="add-list-button" onClick={addList}>+ add new list</button>
+                  <div className="member-container">
+                    {members.map((members, key) => (
+                      <div key={key} className="member-circle">
+                        <p>{members.first_name.substring(0,1)
+                        }{members.last_name.substring(0,1)}</p>
+                      </div>
+                    ))}
+                    <div className="add-member-container">
+                      <div className={`member-circle add-circle`}  onClick={toggleAddMembers}>
+                        <p className={showAddMembers ? 'close-add-members-form' : 'open-add-members-form'}>+</p>
+                      </div>
+                      <AddMemberForm
+                        showAddMembers={showAddMembers}
+                        toggleAddMembers={toggleAddMembers}
+                        projectId={id}
+                      />
                     </div>
-                  ))}
-                  <div className="add-member-container">
-                    <div className={`member-circle add-circle`}  onClick={toggleAddMembers}>
-                      <p className={showAddMembers ? 'close-add-members-form' : 'open-add-members-form'}>+</p>
-                    </div>
-                    <AddMemberForm
-                      showAddMembers={showAddMembers}
-                      toggleAddMembers={toggleAddMembers}
-                      projectId={id}
-                    />
                   </div>
                 </div>
               </div>
