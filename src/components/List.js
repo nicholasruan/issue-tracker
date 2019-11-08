@@ -12,10 +12,6 @@ function List(props) {
   const [cardList, setCardList] = useState([]);
   const { toggleListAction, title, id, index, projListSize, lists, projectId } = props;
 
-  const testCards = [
-    'test', 'test1', 'test2'
-  ]
-
   useEffect(() => {
     if (showListMenu) {
       document.body.addEventListener('click', (e) => {
@@ -123,7 +119,7 @@ function List(props) {
         <Droppable droppableId={id}>
           {provided => (
             <div ref={provided.innerRef} {...provided.droppableProps} className="droppable-area">
-              {cardList.map((card, index) => <Card key={card._id} index={index.toString()} name={card.name} id={card._id}/>)}
+              {cardList.map((card, index) => <Card key={card._id} index={index} name={card.name} id={card._id}/>)}
               {provided.placeholder}
             </div>
           )}

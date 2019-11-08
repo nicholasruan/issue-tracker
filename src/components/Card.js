@@ -6,7 +6,7 @@ function Card(props) {
   
   return (
     <div>
-      <Draggable draggableId={id} index={index.toString()}>
+      <Draggable draggableId={id} index={index}>
         {(provided) => (
           <div
             {...provided.draggableProps}

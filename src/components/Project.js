@@ -91,15 +91,60 @@ function Project(props) {
   const onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
 
-    if (!destination) {
-      return;
-    }
+    if (!destination) return;
 
     if (
       destination.droppableId === source.droppableId &&
       destination.index === source.index
     ) {
       return;
+    }
+
+    const startColumn = lists.filter(list => list._id === source.droppableId)[0];
+    const finishColumn = lists.filter(list => list._id === destination.droppableId)[0];
+
+    // reordering within one column
+    if (startColumn._id === finishColumn._id) {
+      const newCardIds = startColumn.card_ids;
+      newCardIds.splice(source.index, 1);
+      newCardIds.splice(destination.index, 0, draggableId);
+
+      // const updatedColumn = { 
+      //   ...startColumn,
+      //   card_ids: newCardIds,
+      // };
+
+      // const updatedList = lists.map((item) => {
+      //   if (item._id === startColumn._id) {
+      //     return updatedColumn;
+      //   } else {
+      //     return item;
+      //   }
+      // })
+
+      console.log(newCardIds);
+      axios.put(`https://issue-base-db.herokuapp.com/api/lists/${startColumn._id}/edit`, {
+        card_ids: newCardIds
+      },{
+      headers: {
+        'Content-Type': 'application/json',
+        'auth-token': localStorage.token
+      }
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        const message = error.response || '';
+        Swal.fire({
+          position: 'top-end',
+          title: message.data,
+          showConfirmButton: false,
+          timer: 3000,
+          width: 500
+        });
+      });
+      setListAction(true);
     }
 
 
