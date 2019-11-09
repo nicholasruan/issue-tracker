@@ -44,7 +44,7 @@ function Project(props) {
       console.log(err);
     })
 
-  }, [id, showAddMembers, newList, listAction]);
+  }, [lists, id, showAddMembers, newList, listAction]);
 
   const deleteProject = () => {
     axios.delete(`https://issue-base-db.herokuapp.com/api/projects/${id}/delete`, { data: {
@@ -109,20 +109,20 @@ function Project(props) {
       newCardIds.splice(source.index, 1);
       newCardIds.splice(destination.index, 0, draggableId);
 
-      // const updatedColumn = { 
-      //   ...startColumn,
-      //   card_ids: newCardIds,
-      // };
+      const updatedColumn = { 
+        ...startColumn,
+        card_ids: newCardIds,
+      };
 
-      // const updatedList = lists.map((item) => {
-      //   if (item._id === startColumn._id) {
-      //     return updatedColumn;
-      //   } else {
-      //     return item;
-      //   }
-      // })
+      const updatedList = lists.map((item) => {
+        if (item._id === startColumn._id) {
+          return updatedColumn;
+        } else {
+          return item;
+        }
+      })
 
-      console.log(newCardIds);
+      
       axios.put(`https://issue-base-db.herokuapp.com/api/lists/${startColumn._id}/edit`, {
         card_ids: newCardIds
       },{
@@ -133,6 +133,7 @@ function Project(props) {
       })
       .then(function (response) {
         console.log(response);
+        setLists([]);
       })
       .catch(function (error) {
         const message = error.response || '';
