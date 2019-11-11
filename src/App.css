@@ -48,7 +48,7 @@
   position: relative;
   margin: 10px;
   margin-bottom: 50px;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
 .list-title {

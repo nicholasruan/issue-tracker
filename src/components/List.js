@@ -31,12 +31,25 @@ function List(props) {
         'auth-token': localStorage.token
       }
     }).then(res => {
-      console.log(res.data.cards);
       setCardList(res.data.cards);
     }).catch(err => {
       console.log(err);
     })
-  }, []);
+  }, [id]);
+
+  // useEffect(() => {
+  //   console.log('diu lei');
+  //   axios.get(`https://issue-base-db.herokuapp.com/api/lists/${id}`, {
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'auth-token': localStorage.token
+  //     }
+  //   }).then(res => {
+  //     setCardList(res.data.cards);
+  //   }).catch(err => {
+  //     console.log(err);
+  //   })
+  // }, [id])
 
   const toggleListMenu = (e) => {
     setShowListMenu(!showListMenu);

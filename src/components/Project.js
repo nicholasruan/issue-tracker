@@ -21,7 +21,7 @@ class Project extends React.Component {
     newList: false,
     lists: [],
     listAction: false,
-    isShowing: false
+    isShowing: false,
   }
 
   async componentDidMount() {
@@ -139,6 +139,9 @@ class Project extends React.Component {
     // reordering within one column
     if (startColumn._id === finishColumn._id) {
       const newCardIds = startColumn.card_ids;
+
+      console.log(`moving from ${source.index} to ${destination.index}`);
+
       newCardIds.splice(source.index, 1);
       newCardIds.splice(destination.index, 0, draggableId);
 
@@ -154,78 +157,40 @@ class Project extends React.Component {
           return item;
         }
       })
-      console.log(updatedLists)
-      this.setState({
-        lists: updatedLists
-      })
-    //   axios.put(`https://issue-base-db.herokuapp.com/api/lists/${startColumn._id}/edit`, {
-    //     card_ids: newCardIds
-    //   },{
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'auth-token': localStorage.token
-    //   }
-    //   })
-    //   .then(function (response) {
-    //     console.log(response);
-    //     this.setState({
-    //       lists: []
-    //     });
-    //   })
-    //   .catch(function (error) {
-    //     const message = error.response || '';
-    //     Swal.fire({
-    //       position: 'top-end',
-    //       title: message.data,
-    //       showConfirmButton: false,
-    //       timer: 3000,
-    //       width: 500
-    //     });
-    //   });
-    //   this.setState({
-    //     listAction: true
-    //   });
+
+     
+      console.log(updatedLists);
+      this.setState({lists: updatedLists});
+
+
+      // axios.put(`https://issue-base-db.herokuapp.com/api/lists/${startColumn._id}/edit`, {
+      //   card_ids: newCardIds
+      // },{
+      // headers: {
+      //   'Content-Type': 'application/json',
+      //   'auth-token': localStorage.token
+      // }
+      // })
+      // .then(function (response) {
+      //   console.log(response);
+      //   console.log(lists);
+      //   // this.setState({rerender: !this.state.rerender});
+      // })
+      // .catch(function (error) {
+      //  console.log(error)
+      // });
+      
     }
   }
-  //
-  //   onDragEnd = result => {
-  //   const {destination, source, draggableId} = result;
-  //   if (!destination) {
-  //     return;
-  //   }
-  //   if (
-  //     destination.droppableId === source.droppableId &&
-  //     destination.index === source.index
-  //   ) {
-  //     return;
-  //   }
-  //   const column = this.state.lists.filter(list => list._id === source.droppableId)[0];
-  //   const newHeroIds = column.card_ids;
-  //   newHeroIds.splice(source.index, 1);
-  //   newHeroIds.splice(destination.index, 0, draggableId);
-  //   const newColumn = {
-  //     ...column,
-  //     heroIds: newHeroIds,
-  //   };
-  //   const newState = {
-  //     ...this.state,
-  //     lists: {
-  //       ...this.state.lists,
-  //       [newColumn.id]: newColumn,
-  //     },
-  //   };
-  //   this.setState({
-  //     lists: newState
-  //   });
-  // };
+  
 
   render() {
-    console.log(this.state);
+
     const { isLoading, onDragEnd, deleteProject, addList, toggleAddMembers, props, setTitle, setNewList, setListAction, toggle } = this;
     const { id, title, members, showAddMembers, newList, lists, isShowing } = this.state;
     return (
       <div>
-      <DragDropContext onDragEnd={onDragEnd}>
+      
       <div className="project-container">
       {isLoading ? (<h3>Loading...</h3>) : (
         <div>
@@ -270,6 +235,7 @@ class Project extends React.Component {
       </Modal>
       </div>
       <div className="project-body">
+      <DragDropContext onDragEnd={onDragEnd}>
       {lists.map((list, key) =>(
         <List
         key={list._id}
@@ -282,14 +248,14 @@ class Project extends React.Component {
         projListSize={lists.length}
         />
       ))}
-
+       </DragDropContext>
       {newList ?
         <AddListForm
         showList={setNewList}
         projId={id}
         /> :  <div className="padded-section"></div>}
         </div>
-        </DragDropContext>
+       
         </div>
       )
   }
