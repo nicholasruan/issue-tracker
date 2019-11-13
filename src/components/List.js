@@ -10,7 +10,7 @@ function List(props) {
   const [showListMenu, setShowListMenu] = useState(false);
   const [showListEdit, setShowListEdit] = useState(false);
   const [cardList, setCardList] = useState([]);
-  const { toggleListAction, title, id, index, projListSize, lists, projectId } = props;
+  const { toggleListAction, title, id, index, projListSize, lists, projectId, listAction } = props;
 
   useEffect(() => {
     if (showListMenu) {
@@ -23,7 +23,7 @@ function List(props) {
           setShowListMenu(false);
         }
       });
-    } 
+    }
 
     axios.get(`https://issue-base-db.herokuapp.com/api/lists/${id}`, {
       headers: {
@@ -35,7 +35,7 @@ function List(props) {
     }).catch(err => {
       console.log(err);
     })
-  }, [id]);
+  }, [id, showListMenu]);
 
   // useEffect(() => {
   //   console.log('diu lei');

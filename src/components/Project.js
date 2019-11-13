@@ -49,6 +49,31 @@ class Project extends React.Component {
     }
   }
 
+  // async componentDidUpdate() {
+  //   const projId = window.location.pathname.split('/')[3];
+  //
+  //   // if (!id) return console.log('No Project Yet');
+  //   try {
+  //     const res = await axios.get(`https://issue-base-db.herokuapp.com/api/projects/${projId}`, {
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         'auth-token': localStorage.token
+  //       }
+  //     })
+  //     const data = await res.data;
+  //     this.setState({
+  //       id: projId,
+  //       title: data.project.title,
+  //       members: data.members,
+  //       lists: data.lists,
+  //       isLoading: false,
+  //       listAction: false
+  //     });
+  //   } catch(e) {
+  //     console.log(e);
+  //   }
+  // }
+
   setTitle = (title) => {
     this.setState({
       title: title
@@ -138,7 +163,7 @@ class Project extends React.Component {
 
     // reordering within one column
     if (startColumn._id === finishColumn._id) {
-      const newCardIds = startColumn.card_ids;
+      const newCardIds = [...startColumn.card_ids];
 
       console.log(`moving from ${source.index} to ${destination.index}`);
 
@@ -158,9 +183,12 @@ class Project extends React.Component {
         }
       })
 
-     
+
       console.log(updatedLists);
       this.setState({lists: updatedLists});
+      console.log(this.state.lists);
+      console.log(this.state);
+      this.setListAction(true);
 
 
       // axios.put(`https://issue-base-db.herokuapp.com/api/lists/${startColumn._id}/edit`, {
@@ -179,18 +207,18 @@ class Project extends React.Component {
       // .catch(function (error) {
       //  console.log(error)
       // });
-      
+
     }
   }
-  
+
 
   render() {
 
     const { isLoading, onDragEnd, deleteProject, addList, toggleAddMembers, props, setTitle, setNewList, setListAction, toggle } = this;
-    const { id, title, members, showAddMembers, newList, lists, isShowing } = this.state;
+    const { id, title, members, showAddMembers, newList, lists, isShowing, listAction } = this.state;
     return (
       <div>
-      
+
       <div className="project-container">
       {isLoading ? (<h3>Loading...</h3>) : (
         <div>
@@ -255,7 +283,7 @@ class Project extends React.Component {
         projId={id}
         /> :  <div className="padded-section"></div>}
         </div>
-       
+
         </div>
       )
   }
