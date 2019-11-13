@@ -12,6 +12,7 @@ function Card(props) {
     padding: 8px;
     margin-bottom: 8px;
     background: white;
+    box-shadow: 1px 1px 5px 1px #c2c2c2;
   `;
 
   return (
@@ -22,7 +23,13 @@ function Card(props) {
             {...provided.dragHandleProps}
             ref={provided.innerRef}
           >
-            {name}
+            <div className="card-header">
+              <p>{name}</p>
+              <div className="card-menu">...</div>
+            </div>
+            <div className="card-body">
+
+            </div>
           </Container>
         )}
       </Draggable>

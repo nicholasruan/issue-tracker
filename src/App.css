@@ -3,11 +3,27 @@
 }
 
 /* Card Component */
-.card-body {
-  border: 1px solid black;
-  background-color: white;
-  margin-top: 5px;
-  padding: 10px;
+.card-header {
+  display: inline-flex;
+  position: relative;
+  width: 100%;
+}
+
+.card-menu {
+  position: absolute;
+  right: 0;
+  transform: rotate(90deg);
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  padding-bottom: 5px;
+  text-align: center;
+  top: -3px;
+}
+
+.card-menu:hover {
+  background: rgb(225, 223, 224);
+  border-radius: 3px;
 }
 
 /* EditListForm Component */
