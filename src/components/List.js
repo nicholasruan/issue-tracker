@@ -12,6 +12,7 @@ function List(props) {
   const [showListEdit, setShowListEdit] = useState(false);
   const [cardList, setCardList] = useState([]);
   const [showCardForm, setShowCardForm] = useState(false);
+  const [user, setUser] = useState({});
   const { toggleListAction, title, id, index, projListSize, lists, projectId } = props;
 
   useEffect(() => {
@@ -27,6 +28,18 @@ function List(props) {
       });
     }
 
+    axios.get(`https://issue-base-db.herokuapp.com/api/users/${localStorage.user_id}`,
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        'auth-token': localStorage.token
+      }
+    }).then(res => {
+      setUser(res.data.user);
+    }).catch(err => {
+      console.log(err);
+    })
+
     axios.get(`https://issue-base-db.herokuapp.com/api/lists/${id}`, {
       headers: {
         'Content-Type': 'application/json',
@@ -37,7 +50,7 @@ function List(props) {
     }).catch(err => {
       console.log(err);
     })
-  }, [id, showListMenu]);
+  }, [id, showListMenu, showCardForm]);
 
   // useEffect(() => {
   //   console.log('diu lei');
@@ -141,7 +154,12 @@ function List(props) {
         </Droppable>
       </div>
       <div className="list-footer">
-        {showCardForm ? <AddCardForm setShowCardForm={setShowCardForm} /> : null}
+        {showCardForm ?
+        <AddCardForm
+          setShowCardForm={setShowCardForm}
+          userFullName={`${user.first_name} ${user.last_name}`}
+          listId={id}
+        /> : null}
         <div className="add-card-button">
           <button
             className="add-list-button add-card"

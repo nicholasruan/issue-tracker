@@ -10,8 +10,8 @@ function ProjectCard(props) {
     } else {
       setName(props.name);
     }
-  });
-  
+  }, [props.name]);
+
 
   return(
     <Link to={`/app/projects/${props.id}`}className="project-card-link">

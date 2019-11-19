@@ -15,7 +15,7 @@ function AddCardForm(props) {
 
     axios.post('https://issue-base-db.herokuapp.com/api/cards/create', {
       name: name,
-      created_by: props.userName,
+      created_by: props.userFullName,
       list_id: props.listId
     },{
       headers: {
@@ -25,7 +25,7 @@ function AddCardForm(props) {
     })
     .then(function (response) {
       console.log(response);
-      props.showList(false);
+      setShowCardForm(false);
     })
     .catch(function (error) {
       const message = error.response || '';
