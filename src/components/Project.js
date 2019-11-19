@@ -109,18 +109,18 @@ function Project(props) {
       newCardIds.splice(source.index, 1);
       newCardIds.splice(destination.index, 0, draggableId);
 
-      const updatedColumn = {
-        ...startColumn,
-        card_ids: newCardIds,
-      };
-
-      const updatedList = lists.map((item) => {
-        if (item._id === startColumn._id) {
-          return updatedColumn;
-        } else {
-          return item;
-        }
-      })
+      // const updatedColumn = {
+      //   ...startColumn,
+      //   card_ids: newCardIds,
+      // };
+      //
+      // const updatedList = lists.map((item) => {
+      //   if (item._id === startColumn._id) {
+      //     return updatedColumn;
+      //   } else {
+      //     return item;
+      //   }
+      // })
 
       axios.put(`https://issue-base-db.herokuapp.com/api/lists/${startColumn._id}/edit`, {
         card_ids: newCardIds
@@ -150,33 +150,33 @@ function Project(props) {
 
     const startCardIds = [...startColumn.card_ids];
     startCardIds.splice(source.index, 1);
-    const newStart = {
-      ...startColumn,
-      card_ids: startCardIds
-    };
+    // const newStart = {
+    //   ...startColumn,
+    //   card_ids: startCardIds
+    // };
 
     const finishCardIds = [...finishColumn.card_ids];
     finishCardIds.splice(destination.index, 0, draggableId);
-    const newFinish = {
-      ...finishColumn,
-      card_ids: finishCardIds
-    };
+    // const newFinish = {
+    //   ...finishColumn,
+    //   card_ids: finishCardIds
+    // };
 
-    const updatedListWithStart = lists.map(item => {
-      if (item._id === startColumn._id) {
-        return newStart;
-      } else {
-        return item;
-      }
-    });
-
-    const updatedListWithFinishAndStart = updatedListWithStart.map(item => {
-      if (item._id === finishColumn._id) {
-        return newFinish;
-      } else {
-        return item;
-      }
-    });
+    // const updatedListWithStart = lists.map(item => {
+    //   if (item._id === startColumn._id) {
+    //     return newStart;
+    //   } else {
+    //     return item;
+    //   }
+    // });
+    //
+    // const updatedListWithFinishAndStart = updatedListWithStart.map(item => {
+    //   if (item._id === finishColumn._id) {
+    //     return newFinish;
+    //   } else {
+    //     return item;
+    //   }
+    // });
 
     axios.put(`https://issue-base-db.herokuapp.com/api/lists/${startColumn._id}/edit`, {
       card_ids: startCardIds

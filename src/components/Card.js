@@ -28,7 +28,7 @@ function Card(props) {
               <div className="card-menu">...</div>
             </div>
             <div className="card-body">
-
+              
             </div>
           </Container>
         )}

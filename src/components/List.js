@@ -4,13 +4,15 @@ import Swal from 'sweetalert2';
 import ListMenu from './ListMenu';
 import EditListForm from './EditListForm';
 import Card from './Card';
+import AddCardForm from './AddCardForm';
 import { Droppable } from 'react-beautiful-dnd';
 
 function List(props) {
   const [showListMenu, setShowListMenu] = useState(false);
   const [showListEdit, setShowListEdit] = useState(false);
   const [cardList, setCardList] = useState([]);
-  const { toggleListAction, title, id, index, projListSize, lists, projectId, listAction } = props;
+  const [showCardForm, setShowCardForm] = useState(false);
+  const { toggleListAction, title, id, index, projListSize, lists, projectId } = props;
 
   useEffect(() => {
     if (showListMenu) {
@@ -139,8 +141,16 @@ function List(props) {
         </Droppable>
       </div>
       <div className="list-footer">
-          <button className="add-list-button add-card">Add a new card</button>
+        {showCardForm ? <AddCardForm setShowCardForm={setShowCardForm} /> : null}
+        <div className="add-card-button">
+          <button
+            className="add-list-button add-card"
+            onClick={() => setShowCardForm(true)}
+          >
+            Add a new card
+          </button>
         </div>
+      </div>
     </div>
   )
 }

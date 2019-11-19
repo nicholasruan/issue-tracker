@@ -2,6 +2,42 @@
   min-width: 300px;
 }
 
+/* AddCardForm Component */
+.cancel-card-form {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  align-items: center;
+  display: inherit;
+  padding: 1px;
+  justify-content: center;
+}
+
+.cancel-card-form:hover {
+  background: rgb(225, 223, 224);
+  border-radius: 3px;
+}
+
+.add-card-form {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid lightgrey;
+  border-radius: 2px;
+  padding: 8px;
+  margin: 0px 10px;
+  background: white;
+  box-shadow: 1px 1px 5px 1px #c2c2c2;
+}
+
+.add-card-form input {
+  width: 94%;
+  padding: 3px;
+  border-radius: 3px;
+  border: 0.6px solid black;
+  font-family: Avenir Next;
+}
+
+
 /* Card Component */
 .card-header {
   display: inline-flex;
@@ -63,6 +99,11 @@
 }
 
 /* List Component */
+.add-card-button {
+  display: flex;
+  justify-content: center;
+}
+
 .droppable-area {
   height: 100%;
   min-height: 5vh;
@@ -72,7 +113,7 @@
   z-index: 2;
   position: relative;
   margin: 10px;
-  margin-bottom: 50px;
+  margin-bottom: 21px;
   /* overflow-x: hidden; */
 }
 
@@ -125,6 +166,12 @@
 }
 
 .add-form input {
+  width: 50%;
+  padding: 3px;
+  margin-bottom: 7px;
+  border-radius: 3px;
+  border: 0.6px solid black;
+  font-family: Avenir Next;
   margin-left: 5px;
   margin-top: 5px;
   margin-right: 5px;
@@ -137,10 +184,8 @@
 
 .list-footer {
   width: 100%;
-  position: absolute;
+  position: inherit;
   bottom: 10px;
-  display: flex;
-  justify-content: center;
 }
 
 

@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Project from './Project';
 import ProjectForm from './ProjectForm';
 import Modal from './Modal';
 import ProjectCard from './ProjectCard';
 import useModal from '../hooks/useModal';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 
 function Dashboard(props) {
   const {isShowing, toggle} = useModal();
