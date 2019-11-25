@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 
 function AddListForm(props) {
   const [name, setName] = useState('');
+  const { showList } = props;
 
   const handleChange = (e) => {
     setName(e.target.value);
@@ -11,7 +12,7 @@ function AddListForm(props) {
 
   const newList = (e) => {
     e.preventDefault();
-    
+
     axios.post('https://issue-base-db.herokuapp.com/api/lists/create', {
       title: name,
       project_id: props.projId
@@ -23,7 +24,7 @@ function AddListForm(props) {
     })
     .then(function (response) {
       console.log(response);
-      props.showList(false);
+      showList(false);
     })
     .catch(function (error) {
       const message = error.response || '';
@@ -42,6 +43,7 @@ function AddListForm(props) {
       <form onSubmit={newList}>
         <input type="text" placeholder="Name" value={name} onChange={handleChange} />
         <button type="submit">add list</button>
+        <button type="button" onClick={() => {showList(false); setName('');}}>cancel</button>
       </form>
     </div>
   )
