@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import styled from 'styled-components';
 import CardMenu from './CardMenu';
@@ -6,6 +6,20 @@ import CardMenu from './CardMenu';
 function Card(props) {
   const [showCardMenu, setShowCardMenu] = useState(false);
   const { name, index, id } = props;
+
+  useEffect(() => {
+    if (showCardMenu) {
+      document.body.addEventListener('click', (e) => {
+        const cardMenuItem = 'card-menu-item';
+        const cardSettings = 'card-settings';
+        const cardMenuContainer = 'card-menu-container';
+
+        if (cardMenuItem !== e.target.className && cardSettings !== e.target.className && cardMenuContainer !== e.target.className) {
+          toggleCardMenu();
+        }
+      });
+    }
+  })
 
   const Container = styled.div`
     border: 1px solid lightgrey;
